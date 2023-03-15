@@ -1,4 +1,4 @@
-# htp-javascript-task
+# MSIB-javascript-task
 MSIB PT Hendevane - Javascript Courses Task
 
 ## Task1-Geometry
