@@ -1,54 +1,33 @@
-function tambah() {
-  var frm = document.getElementById("kalkulator");
-  var a1 = parseFloat(frm.angka.value);
-  var a2 = parseFloat(frm.angka2.value);
-  var total = a1 + a2;
-  frm.hasil.value = a1 && a2 ? total : emptyInput();
-}
+const getValue = () => {
+  let frm = document.getElementById("kalkulator");
+  let a1 = Number(frm.angka.value);
+  let a2 = Number(frm.angka2.value);
+  let err = "Maaf Angka belum terisi";
 
-function kurang() {
-  var frm = document.getElementById("kalkulator");
-  var a1 = parseFloat(frm.angka.value);
-  var a2 = parseFloat(frm.angka2.value);
-  var total = a1 - a2;
-  frm.hasil.value = a1 && a2 ? total : emptyInput();
-}
+  return { a1, a2, frm, err };
+};
 
-/*tugas ke 4 Javascript
-1. Lengkapilah form dari latihan 15js menggunakan CSS dan table 
-2. Perbagus tampilannya 
-3. Lengkapi perhitungannya dengan:
-- pembagian
-- perkalian
-- pangkat
-4. jika form input dari angka 1 dan 2 kosong dan user klik button, 
-maka tampilkan "Maaf angka belum terisi"
-*/
+const tambah = () => {
+  let { a1, a2, frm, err } = getValue();
+  frm.hasil.value = a1 && a2 ? a1 + a2 : err;
+};
+
+const kurang = () => {
+  let { a1, a2, frm, err } = getValue();
+  frm.hasil.value = a1 && a2 ? a1 - a2 : err;
+};
 
 const bagi = () => {
-  let frm = document.getElementById("kalkulator");
-  let a1 = frm.angka.value;
-  let a2 = frm.angka2.value;
-  let total = a1 / a2;
-  frm.hasil.value = a1 && a2 ? total : emptyInput();
+  let { a1, a2, frm, err } = getValue();
+  frm.hasil.value = a1 && a2 ? a1 / a2 : err;
 };
 
 const kali = () => {
-  let frm = document.getElementById("kalkulator");
-  let a1 = frm.angka.value;
-  let a2 = frm.angka2.value;
-  let total = a1 * a2;
-  frm.hasil.value = a1 && a2 ? total : emptyInput();
+  let { a1, a2, frm, err } = getValue();
+  frm.hasil.value = a1 && a2 ? a1 * a2 : err;
 };
 
 const pangkat = () => {
-  let frm = document.getElementById("kalkulator");
-  let a1 = frm.angka.value;
-  let a2 = frm.angka2.value;
-  let total = Math.pow(a1, a2);
-  frm.hasil.value = a1 && a2 ? total : emptyInput();
-};
-
-const emptyInput = () => {
-  return "Maaf Angka belum terisi";
+  let { a1, a2, frm, err } = getValue();
+  frm.hasil.value = a1 && a2 ? Math.pow(a1, a2) : err;
 };
